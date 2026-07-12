@@ -31,6 +31,9 @@ export const audio = (() => {
             audioEl.autoplay = false;
             audioEl.controls = false;
 
+            const vol = document.body.getAttribute('data-volume');
+            audioEl.volume = vol !== null ? Math.max(0, Math.min(1, parseFloat(vol))) : 0.5;
+
             progress.complete('audio');
         } catch {
             progress.invalid('audio');
